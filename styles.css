@@ -70,7 +70,7 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
-    background-color: grey
+    background-color: #1A43BF
 }
 
 .footer-text {

@@ -12,7 +12,7 @@ nav {
     flex-wrap:wrap;
     justify-content: space-between;
     padding: 20px;
-    background-color: rgb(63, 61, 61);
+    background-color: #00072D;
     position: sticky;
     top: 0;
 }
@@ -35,7 +35,7 @@ nav a {
 }
 
 nav a:hover {
-    color: black;
+    color: #1A43BF;
     text-decoration: underline;
 }
 
