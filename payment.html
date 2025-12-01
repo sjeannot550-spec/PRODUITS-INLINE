@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement - KAZAKHSTAN</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<form id="paymentForm">
+  <h2>Paiement du produit</h2>
+  <p>Produit : <span id="item"></span></p>
+  <p>Prix : <span id="price"></span></p>
+  <input type="hidden" id="produit-nom" name="produit">
+  <input type="hidden" id="produit-prix" name="prix">
+
+  <label>Nom complet :</label>
+  <input type="text" name="fullname" required>
+
+  <label>Numéro Orange/Airtel :</label>
+  <input type="tel" name="phone" placeholder="Ex: +2438xxxxxxxx" required>
+
+  <label>Opérateur :</label>
+  <select name="operator" required>
+    <option value="orange">Orange Money</option>
+    <option value="airtel">Airtel Money</option>
+    <option value="M-pesa">M-pesa</option>
+  </select>
+
+  <button type="submit">Payer maintenant</button>
+</form>
+
+<!-- Message de confirmation -->
+<p id="confirmationMessage" style="display:none; font-size:18px; color:green; margin-top:20px;"></p>
+
+<script>
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  const item = params.get("item");
+  const price = params.get("price");
+  document.getElementById("item").innerText = item;
+  document.getElementById("price").innerText = price + " $";
+  document.getElementById("produit-nom").value = item;
+  document.getElementById("produit-prix").value = price;
+}
+
+// Gestion du paiement simulé
+document.getElementById("paymentForm").addEventListener("submit", function(e){
+  e.preventDefault(); // Empêche l'envoi du formulaire
+  const item = document.getElementById("produit-nom").value;
+  const price = document.getElementById("produit-prix").value;
+  const fullname = this.fullname.value;
+
+  // Affichage du message de confirmation
+  const message = document.getElementById("confirmationMessage");
+  message.innerText = `Merci ${fullname}, votre paiement de ${price}$ pour le produit "${item}" a été effectué avec succès !`;
+  message.style.display = "block";
+
+  // Réinitialiser le formulaire si nécessaire
+  this.reset();
+});
+</script>
+
+</body>
+</html>

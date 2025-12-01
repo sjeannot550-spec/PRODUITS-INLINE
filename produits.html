@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>site e-commerce complet à partir de zéro - Frenchcoder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="auth.js"></script>
+</head>
+<body>
+
+<nav>
+  <h1>KAZAKHSTAN</h1>
+  <div class="onglets">
+    <ul>
+      <li><a href="index.html">ACCUEIL</a></li>
+      <li><a href="inscription.html" id="inscrire-link">S'INSCRIRE</a></li>
+      <li><a href="connexion.html" id="connexion-link">CONNEXION</a></li>
+      <li><a href="#" id="deconnexion-link" style="display:none;">DÉCONNEXION</a></li>
+    </ul>
+    <p id="user-info" style="color:white;"></p>
+    <form>
+      <input type="search" placeholder="Rechercher">
+    </form>
+  </div>
+</nav>
+
+<section class="main">
+  <div class="cards">
+    <!-- Ajouter des produits comme dans index.html -->
+     <div class="cards">
+  <!-- 1. Banane -->
+  <div class="card">
+    <img src="image/air jordan/IMG-20250822-WA0070.jpg" alt="">
+    <div class="card-header"><h4 class="title">AIR JORDAN</h4></div>
+    <div class="card-body">
+      <p>Riche en potassium et vitamine B6.</p>
+      <button onclick="window.location.href='payment.html?item=AIR JORDAN&price=0.39'">Acheter 0,39$</button>
+    </div>
+  </div>
+
+  <!-- 2. Orange -->
+  <div class="card">
+    <img src="image/airfox/IMG-20250819-WA0035.jpg" alt="">
+    <div class="card-header"><h4 class="title">AIR FOX</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et antioxydants.</p>
+      <button onclick="window.location.href='payment.html?item=AIR FOX&price=0.50'">Acheter 0,50$</button>
+    </div>
+  </div>
+
+  <!-- 3. Pomme -->
+  <div class="card">
+    <img src="image/WhatsApp Image 2025-11-22 à 15.53.49_6c942b79 AT.jpg" alt="">
+    <div class="card-header"><h4 class="title">AIR JORDAN</h4></div>
+    <div class="card-body">
+      <p>Source de fibres et antioxydants.</p>
+      <button onclick="window.location.href='payment.html?item=AIR JORDAN&price=0.99'">Acheter 0,99$</button>
+    </div>
+  </div>
+
+  <!-- 4. Tomate -->
+  <div class="card">
+    <img src="image/bote/IMG-20250820-WA0075.jpg" alt="">
+    <div class="card-header"><h4 class="title">BOTE</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et lycopène.</p>
+      <button onclick="window.location.href='payment.html?item=BOTE&price=0.30'">Acheter 0,30$</button>
+    </div>
+  </div>
+
+  <!-- 5. Carotte -->
+  <div class="card">
+    <img src="image/chossure/IMG-20250819-WA0022.jpg" alt="">
+    <div class="card-header"><h4 class="title">CHOSSURE</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine A et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=CHOSSURE&price=0.20'">Acheter 0,20$</button>
+    </div>
+  </div>
+
+  <!-- 6. Brocoli -->
+  <div class="card">
+    <img src="image/varesse/IMG-20250909-WA0013.jpg" alt="">
+    <div class="card-header"><h4 class="title">varesse</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamines K et C.</p>
+      <button onclick="window.location.href='payment.html?item=varesse&price=0.75'">Acheter 0,75$</button>
+    </div>
+  </div>
+
+  <!-- 7. Avocat -->
+  <div class="card">
+    <img src="3uToolsV3/IMG-20251116-WA0012.jpg" alt="">
+    <div class="card-header"><h4 class="title">p</h4></div>
+    <div class="card-body">
+      <p>Riche en bons gras et vitamine E.</p>
+      <button onclick="window.location.href='payment.html?item=p&price=1.20'">Acheter 1,20$</button>
+    </div>
+  </div>
+
+  <!-- 8. Raisin -->
+  <div class="card">
+    <img src="3uToolsV3/IMG-20251116-WA0013.jpg" alt="">
+    <div class="card-header"><h4 class="title">v</h4></div>
+    <div class="card-body">
+      <p>Riche en antioxydants et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=Raisin&price=1.00'">Acheter 1,00$</button>
+    </div>
+  </div>
+
+  <!-- 9. Fraise -->
+  <div class="card">
+    <img src="3uToolsV3/IMG-20251116-WA0082.jpg" alt="">
+    <div class="card-header"><h4 class="title">v</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et saveur sucrée.</p>
+      <button onclick="window.location.href='payment.html?item=Fraise&price=1.50'">Acheter 1,50$</button>
+    </div>
+  </div>
+
+  <!-- 10. Citron -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Lemon.jpg" alt="Citron Bio">
+    <div class="card-header"><h4 class="title">CITRON BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et anti-oxydants.</p>
+      <button onclick="window.location.href='payment.html?item=Citron&price=0.60'">Acheter 0,60$</button>
+    </div>
+  </div>
+
+  <!-- 11. Ananas -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Pineapple_and_cross_section.jpg" alt="Ananas Bio">
+    <div class="card-header"><h4 class="title">ANANAS BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et bromélaïne.</p>
+      <button onclick="window.location.href='payment.html?item=Ananas&price=2.00'">Acheter 2,00$</button>
+    </div>
+  </div>
+
+  <!-- 12. Pastèque -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Watermelon_cross_BNC.jpg" alt="Pastèque Bio">
+    <div class="card-header"><h4 class="title">PASTÈQUE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en eau et vitamine A.</p>
+      <button onclick="window.location.href='payment.html?item=Pasteque&price=3.00'">Acheter 3,00$</button>
+    </div>
+  </div>
+
+  <!-- 13. Pêche -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Peach_and_cross_section.jpg" alt="Pêche Bio">
+    <div class="card-header"><h4 class="title">PÊCHE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamines A et C.</p>
+      <button onclick="window.location.href='payment.html?item=Peche&price=1.50'">Acheter 1,50$</button>
+    </div>
+  </div>
+
+  <!-- 14. Mangue -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Mango_4.jpg" alt="Mangue Bio">
+    <div class="card-header"><h4 class="title">MANGUE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine A et goût sucré.</p>
+      <button onclick="window.location.href='payment.html?item=Mangue&price=2.50'">Acheter 2,50$</button>
+    </div>
+  </div>
+
+  <!-- 15. Kiwi -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Kiwi_aka.jpg" alt="Kiwi Bio">
+    <div class="card-header"><h4 class="title">KIWI BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=Kiwi&price=1.20'">Acheter 1,20$</button>
+    </div>
+  </div>
+
+  <!-- 16. Poivron -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Bell_pepper_red.jpg" alt="Poivron Bio">
+    <div class="card-header"><h4 class="title">POIVRON BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et antioxydants.</p>
+      <button onclick="window.location.href='payment.html?item=Poivron&price=0.80'">Acheter 0,80$</button>
+    </div>
+  </div>
+
+  <!-- 17. Concombre -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Cucumber-Whole-Slices.jpg" alt="Concombre Bio">
+    <div class="card-header"><h4 class="title">CONCOMBRE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en eau et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=Concombre&price=0.50'">Acheter 0,50$</button>
+    </div>
+  </div>
+
+  <!-- 18. Courgette -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Zucchini.jpg" alt="Courgette Bio">
+    <div class="card-header"><h4 class="title">COURGETTE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamines et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=Courgette&price=0.60'">Acheter 0,60$</button>
+    </div>
+  </div>
+
+  <!-- 19. Aubergine -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Aubergine.jpg" alt="Aubergine Bio">
+    <div class="card-header"><h4 class="title">AUBERGINE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en fibres et antioxydants.</p>
+      <button onclick="window.location.href='payment.html?item=Aubergine&price=0.70'">Acheter 0,70$</button>
+    </div>
+  </div>
+
+  <!-- 20. Chou-fleur -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Cauliflower.jpg" alt="Chou-fleur Bio">
+    <div class="card-header"><h4 class="title">CHOU-FLEUR BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=Chou-fleur&price=1.00'">Acheter 1,00$</button>
+    </div>
+  </div>
+
+  <!-- 21. Épinard -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Spinach_leaves.jpg" alt="Épinard Bio">
+    <div class="card-header"><h4 class="title">ÉPINARD BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en fer et vitamines.</p>
+      <button onclick="window.location.href='payment.html?item=Epinard&price=0.80'">Acheter 0,80$</button>
+    </div>
+  </div>
+
+  <!-- 22. Laitue -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Iceberg_lettuce.jpg" alt="Laitue Bio">
+    <div class="card-header"><h4 class="title">LAITUE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en fibres et vitamines.</p>
+      <button onclick="window.location.href='payment.html?item=Laitue&price=0.50'">Acheter 0,50$</button>
+    </div>
+  </div>
+
+  <!-- 23. Citrouille -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Pumpkin.jpg" alt="Citrouille Bio">
+    <div class="card-header"><h4 class="title">CITROUILLE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en fibres et bêta-carotène.</p>
+      <button onclick="window.location.href='payment.html?item=Citrouille&price=1.50'">Acheter 1,50$</button>
+    </div>
+  </div>
+
+  <!-- 24. Poires -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Pear.jpg" alt="Poire Bio">
+    <div class="card-header"><h4 class="title">POIRE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en fibres et vitamine C.</p>
+      <button onclick="window.location.href='payment.html?item=Poire&price=1.20'">Acheter 1,20$</button>
+    </div>
+  </div>
+
+  <!-- 25. Cerises -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Cherry_Stella444.jpg" alt="Cerise Bio">
+    <div class="card-header"><h4 class="title">CERISE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en antioxydants et goût sucré.</p>
+      <button onclick="window.location.href='payment.html?item=Cerise&price=2.00'">Acheter 2,00$</button>
+    </div>
+  </div>
+
+  <!-- 26. Myrtille -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Blueberries.jpg" alt="Myrtille Bio">
+    <div class="card-header"><h4 class="title">MYRTILLE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en antioxydants et vitamine C.</p>
+      <button onclick="window.location.href='payment.html?item=Myrtille&price=2.50'">Acheter 2,50$</button>
+    </div>
+  </div>
+
+  <!-- 27. Framboise -->
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Raspberry02.jpg" alt="Framboise Bio">
+    <div class="card-header"><h4 class="title">FRAMBOISE BIO</h4></div>
+    <div class="card-body">
+      <p>Riche en vitamine C et fibres.</p>
+      <button onclick="window.location.href='payment.html?item=Framboise&price=2.00'">Acheter 2,00$</button>
+    </div>
+  
+
+    </div>
+  </div>
+</section>
+  </div>
+</section>
+
+</body>
+</html>

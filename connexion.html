@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion - GALAXIE</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="auth.js"></script>
+</head>
+<body>
+
+<form onsubmit="connecter(event)">
+  <h2>Connexion à votre compte</h2>
+  <label>Email :</label>
+  <input type="email" id="email" required placeholder="exemple@gmail.com">
+  <label>Mot de passe :</label>
+  <input type="password" id="password" required>
+  <button type="submit">Se connecter</button>
+  <p>Pas encore inscrit ? <a href="inscription.html">Créer un compte</a></p>
+</form>
+
+<script>
+function connecter(event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  if (!email.includes("@gmail.com")) {
+    alert("Veuillez utiliser un compte Gmail !");
+    return;
+  }
+  localStorage.setItem("userEmail", email);
+  alert("Connexion réussie !");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
