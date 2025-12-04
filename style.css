@@ -178,18 +178,17 @@ footer .social-media p{
 
 /* fin du pied de page */
 
-@media (max-width: 600px) {
-  form {
-    width: 90%;
-    padding: 15px;
-  }
-  
-  h2 {
-    font-size: 18px;
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
   }
 
-  input, select, button {
-    font-size: 14px;
-    padding: 8px;
+  body {
+    padding: 5px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
   }
 }
