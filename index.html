@@ -19,10 +19,19 @@
            <li><a href="inscription.html" id="inscrire-link">S'INSCRIRE</a></li>
            <li><a href="connexion.html" id="connexion-link">CONNEXION</a></li>
            <li><a href="#" id="deconnexion-link" style="display:none;">DÉCONNEXION</a></li>
+           <span id="emailAffiche"></span>
          </ul>
         </div>
      </nav>
     <!-- Fin de la Barre de navigation -->
+
+ <script>
+  const email = localStorage.getItem("userEmail");
+  if (email) {
+    document.getElementById("emailAffiche").innerText = email;
+  }
+ </script>
+
 
     <!-- Header -->
     <Header>
@@ -41,7 +50,7 @@
                     <h4 class="title">Support ventouse multi-usage</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>pour fixer votre téléphone sur une surface plane.</p>
                     <button onclick="window.location.href='payment.html?item=Support ventouse multi-usage&price=25'">Acheter 25$</button>
                 </div>
             </div>
@@ -49,10 +58,10 @@
             <div class="card">
                 <img src="https://i.pinimg.com/736x/2c/5b/01/2c5b015bd65230044dfd395241a2defb.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">power bank</h4>
+                    <h4 class="title">Power Bank Oraimo (10,000mAh)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>idéale pour recharger vos appareils en déplacement.</p>
                     <button onclick="window.location.href='payment.html?item=power bank&price=20'">Acheter 20$</button>
                 </div>
             </div>
@@ -60,10 +69,10 @@
             <div class="card">
                 <img src="https://i.pinimg.com/1200x/ce/29/1c/ce291c659a747233c14d457929a0ba0c.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Ceinture en cuir</h4>
+                    <h4 class="title">Ceinture en cuir (Leather belt)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p> Pour hommes ou femmes.</p>
                     <button onclick="window.location.href='payment.html?item=Ceinture en cuir&price=2.5'">Acheter 2.5$</button>
                 </div>
             </div>
@@ -71,10 +80,10 @@
             <div class="card">
                 <img src="https://i.pinimg.com/736x/26/66/f3/2666f3f72ee6c8447c9b33fc9b09a8a7.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Sac bandoulière</h4>
+                    <h4 class="title">Sac bandoulière (Shoulder Bag)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>pratique et tendance pour les déplacements urbains.</p>
                     <button onclick="window.location.href='payment.html?item=Sac bandoulière&price=5'">Acheter 5$</button>
                 </div>
             </div>
@@ -82,21 +91,21 @@
             <div class="card">
                 <img src="https://i.pinimg.com/1200x/03/aa/82/03aa828194785d9e9159e304ec36e012.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Baton celfi</h4>
+                    <h4 class="title">Trépied selfie (Selfie Stick / Trépied)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p> parfait pour prendre des photos ou vidéos sans les mains.</p>
                     <button onclick="window.location.href='payment.html?item=Baton celfi&price=18'">Acheter 18$</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/1200x/25/dd/46/25dd46edff4291948f9bcdcbbe6a0ad5.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/1f/83/e0/1f83e0dce2cfc3206507100f4a6c24e3.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Sac a dos</h4>
+                    <h4 class="title">Sac à dos USB (Backpack avec port de charge)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>Parfait pour les étudiants ou les travailleurs mobiles.</p>
                     <button onclick="window.location.href='payment.html?item=Sac a dos&price=35'">Acheter 35$</button>
                 </div>
             </div>
@@ -104,10 +113,10 @@
             <div class="card">
                 <img src="https://i.pinimg.com/736x/e8/9c/1a/e89c1ae068985eca6e6b8fa8ca4cf126.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Bracele</h4>
+                    <h4 class="title">Montres intelligentes</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>Montres digitales avec diverses fonctions.</p>
                     <button onclick="window.location.href='payment.html?item=Bracele&price=8'">Acheter 8$</button>
                 </div>
             </div>
@@ -115,10 +124,10 @@
             <div class="card">
                 <img src="https://i.pinimg.com/1200x/eb/1f/45/eb1f455af90528949857418b3d89bc0c.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Mini ventilateur</h4>
+                    <h4 class="title">Mini ventilateur portable</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>pour se rafraîchir en déplacement Peut se fixer au téléphone.</p>
                     <button onclick="window.location.href='payment.html?item=Mini ventilateur&price=2'">Acheter 2$</button>
                 </div>
             </div>
@@ -126,21 +135,21 @@
             <div class="card">
                 <img src="https://i.pinimg.com/736x/64/32/87/643287101f764a4ee4589f8ff00b9ae2.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Casque chat</h4>
+                    <h4 class="title">Cat Helmet (Casque oreille de chat)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=Casque chat&price=5'">Acheter 5$</button>
+                    <p>idéal pour les jeunes et les fans de style kawaii.</p>
+                    <button onclick="window.location.href='payment.html?item=Cat Helmet (Casque oreille de chat)&price=5'">Acheter 5$</button>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://i.pinimg.com/736x/3d/a1/22/3da1221b834c0454c46d49520f141eb6.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">Watch+</h4>
+                    <h4 class="title">Watch+ (Station de recharge 3-en-1)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
+                    <p>idéale pour organiser votre bureau ou table de nuit.</p>
                     <button onclick="window.location.href='payment.html?item=Watch+&price=30'">Acheter 30$</button>
                 </div>
             </div>
@@ -148,157 +157,126 @@
             <div class="card">
                 <img src="https://i.pinimg.com/1200x/60/3c/91/603c9176c5c5680b60ec090bda98320c.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">bande LED</h4>
+                    <h4 class="title"> LED Strip (Bande LED multicolore)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=bande LED&price=20'">Acheter 20$</button>
+                    <p>Idéal pour décorer une chambre, un bureau ou un magasin.</p>
+                    <button onclick="window.location.href='payment.html?item= LED Strip (Bande LED multicolore)&price= 60 000'">Acheter  60 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://i.pinimg.com/1200x/0d/f1/bc/0df1bcccfda5434eecc6657b51d03954.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">ROLEX</h4>
+                    <h4 class="title">Montre ROLEX (modèle fantaisie)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=ROLEX&price=35'">Acheter 35$</button>
+                    <p>Élégante, idéale pour les occasions.</p>
+                    <button onclick="window.location.href='payment.html?item=Montre ROLEX (modèle fantaisie)&price= 105 000'">Acheter  105 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://i.pinimg.com/736x/23/0a/e7/230ae7c6a492527e9297752561f4e4f4.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">support de laptop réglable</h4>
+                    <h4 class="title">Support pour ordinateur portable (Adjustable Laptop Stand)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=support de laptop réglable&price=35'">Acheter 35$</button>
+                    <p>Améliore le confort de travail, idéal pour bureau ou maison.</p>
+                    <button onclick="window.location.href='payment.html?item=Support pour ordinateur portable (Adjustable Laptop Stand)&price=22 000'">Acheter 22 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/1200x/c9/33/58/c93358ae4033fe7dfcf12c54da7579d8.jpg" alt="">
+                <img src="https://i.pinimg.com/1200x/37/04/b7/3704b7dee03a1eb81fc156b8961c70e8.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">support de laptop réglable</h4>
+                    <h4 class="title">Laptop Power Bank (batterie externe pour PC)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=support de laptop réglable&price=35'">Acheter 35$</button>
+                    <p>Recharge un PC portable, tablette ou téléphone.</p>
+                    <button onclick="window.location.href='payment.html?item=Laptop Power Bank (batterie externe pour PC)&price=105 000'">Acheter 105 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/1200x/71/36/3b/71363b776e23c74edd25c99ab5a0099b.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/2b/03/a8/2b03a8797e5d293398c7c5b91f2001d5.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">support de laptop réglable</h4>
+                    <h4 class="title">Chargeur d’ordinateur portable (Laptop Adapter)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=support de laptop réglable&price=35'">Acheter 35$</button>
+                    <p>Essentiel en cas de panne d’alimentation.</p>
+                    <button onclick="window.location.href='payment.html?item=Chargeur d’ordinateur portable (Laptop Adapter)&price=30 000'">Acheter 30 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://i.pinimg.com/736x/71/81/de/7181ded7a683b0e6454b9311049df0a7.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">TWS</h4>
+                    <h4 class="title">Étui AirPods animé (Anime AirPods Case)</h4>
                 </div>
                 <div class="card-body">
                     <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
+                    <button onclick="window.location.href='payment.html?item=Étui AirPods animé (Anime AirPods Case)&price=9 000'">Acheter 9 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/736x/83/77/44/8377447ca299fd846c5600a4f730f68e.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/7a/88/fc/7a88fc68c33ad21b461c371e1eec7c76.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">TWS</h4>
+                    <h4 class="title">Clé USB Lightning Geeclo (USB pour iPhone)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
+                    <p>Mémoire externe de 1TB avec port Lightning.</p>
+                    <button onclick="window.location.href='payment.html?item=Clé USB Lightning Geeclo (USB pour iPhone)&price=15 000'">Acheter 15 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/736x/8a/45/23/8a45230fc549c350427a172ba1727a4d.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/01/d9/5f/01d95f23e901f912113b9be64af57568.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">TWS</h4>
+                    <h4 class="title">Hub USB multiports</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
+                    <p> Parfait pour connecter plusieurs appareils à un PC portable.</p>
+                    <button onclick="window.location.href='payment.html?item=Hub USB multiports&price=21 000'">Acheter 21 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/736x/35/e0/60/35e060c3370562efd99e43e40259443b.jpg" alt="">
+                <img src="https://i.pinimg.com/1200x/7e/f1/72/7ef172308df9a8d0bf3da32e00db5076.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">porte clé</h4>
+                    <h4 class="title">Phone Charger (Chargeur de téléphone rapide 27W PD)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=porte clé=35'">Acheter 35$</button>
+                    <p>Câble USB de haute qualité avec charge rapide.</p>
+                    <button onclick="window.location.href='payment.html?item=porte clé&price=35'">Acheter 105 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/1200x/71/e9/a2/71e9a2156897389514da536914771787.jpg" alt="">
+                <img src="https://i.pinimg.com/736x/14/75/b8/1475b84072f256d13bba5bd179cd10f4.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">porte clé</h4>
+                    <h4 class="title">Smile (Souris sans fil RGB)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
+                    <p>Souris optique sans fil avec lumière LED multicolore.</p>
+                    <button onclick="window.location.href='payment.html?item=TWS&price=105 000'">Acheter 105 000 CDF</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://i.pinimg.com/736x/fb/88/c1/fb88c1dabdd6a66d6ee96e44f6716814.jpg" alt="">
+                <img src="https://i.pinimg.com/1200x/73/95/f7/7395f7f8fc07f735dcce42c77802cac4.jpg" alt="">
                 <div class="card-Header">
-                    <h4 class="title">porte clé</h4>
+                    <h4 class="title">Keyboard (Clavier mécanique rétroéclairé sans fil)</h4>
                 </div>
                 <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
+                    <p>Mini clavier mécanique avec touches RGB.</p>
+                    <button onclick="window.location.href='payment.html?item=Keyboard (Clavier mécanique rétroéclairé sans fil)&price=105 000'">Acheter 105 000 CDF</button>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/13/f3/58/13f3584583ebcd5c09dd16c50df3ab8b.jpg" alt="">
-                <div class="card-Header">
-                    <h4 class="title">porte clé</h4>
-                </div>
-                <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=porte clé=35'">Acheter 35$</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/a4/58/54/a45854e229158c38529159ced205792b.jpg" alt="">
-                <div class="card-Header">
-                    <h4 class="title">porte clé</h4>
-                </div>
-                <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://i.pinimg.com/736x/75/f6/ff/75f6ff5e00c54862b14070d54d83a9cd.jpg" alt="">
-                <div class="card-Header">
-                    <h4 class="title">porte clé</h4>
-                </div>
-                <div class="card-body">
-                    <p>Baton celfi pour Femme et Homme</p>
-                    <button onclick="window.location.href='payment.html?item=TWS=35'">Acheter 35$</button>
-                </div>
-            </div>
-         </div>
+           </div>
+          </div>
+        </div>
         <!-- Fin de Toutes les cartes -->
      </section>
     <!-- Fin de la section principale -->
@@ -310,7 +288,6 @@
             <p><a href="https://web.facebook.com/profile.php?id=61570046106092"><i class="fa-brands fa-facebook-f"></i></a></p>
             <p><a href="https://wa.me/829134460"><i class="fa-brands fa-whatsapp"></i></a></p>
             <p><a href="https://www.instagram.com/jeannotkasikila/"><i class="fa-brands fa-instagram"></i></a></p>
-            <p><a href=""><i class="fa-brands fa-tiktok"></i></a></p>
         </div>
       </footer>
      <!--fin du pied de page -->

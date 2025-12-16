@@ -1,37 +1,56 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription - GALAXIE</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="auth.js"></script>
+  <title>Enregistrement</title>
+  <link rel="stylesheet" href="style2.css">
 </head>
 <body>
 
-<form onsubmit="inscrire(event)">
-  <h2>Créer un compte</h2>
-  <label>Nom complet :</label>
-  <input type="text" id="nom" required>
-  <label>Email :</label>
-  <input type="email" id="email" required placeholder="exemple@gmail.com">
-  <label>Mot de passe :</label>
-  <input type="password" id="mdp" required>
-  <button type="submit">S'inscrire</button>
-</form>
+<!-- Formulaire caché -->
+<div id="formulaire" style="display:none;">
+  <h3>Connexion requise</h3>
+  <form>
+    <label>Nom :</label><br>
+    <input type="text" name="nom"><br>
+    <label>Email :</label><br>
+    <input type="email" name="email"><br>
+    <label>Mot de passe :</label><br>
+    <input type="password" name="password"><br><br>
+    <button type="submit">Se connecter</button>
+  </form>
+</div>
 
 <script>
-function inscrire(event){
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  if (!email.includes("@gmail.com")) {
-    alert("Veuillez utiliser un compte Gmail !");
-    return;
-  }
-  localStorage.setItem("userEmail", email);
-  alert("Inscription réussie !");
-  window.location.href = "index.html";
-}
+  document.querySelector(".submit-btn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const email = document.querySelector("input[type='email']").value;
+    const mdp = document.querySelector("input[type='password']").value;
+    const confirm = document.querySelectorAll("input[type='password']")[1].value;
+
+    if (!email.includes("@gmail.com")) {
+      alert("Utilisez un email Gmail valide !");
+      return;
+    }
+
+    if (mdp.length < 6) {
+      alert("Mot de passe trop court (6 caractères minimum)");
+      return;
+    }
+
+    if (mdp !== confirm) {
+      alert("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    // Enregistrement dans localStorage
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", mdp);
+
+    alert("Inscription réussie !");
+    window.location.href = "index.html"; // ou une autre page
+  });
 </script>
 
 </body>
