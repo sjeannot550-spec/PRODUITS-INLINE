@@ -5,101 +5,67 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Playfair Display", serif;
-}
+ }
 
-body {
-  background: url('img.jpg') no-repeat center center fixed;
+ body {
+  background-image: url('img.jpg'); /* Remplacez par votre image */
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
-form {
-  width: 400px;
+.form-container {
+  width: 600px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
   padding: 30px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
+  padding: 30px;
   color: #000;
 }
 
 label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #000;
   display: block;
   margin-top: 10px;
+  font-weight: bold;
 }
 
-input[type="text"],
-input[type="tel"],
-select {
+input, select, textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 16px;
 }
 
-button,
-input[type="submit"] {
-    background-color: #112e42;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.row > div {
+  flex: 1;
+}
+
+.submit-btn {
   width: 100%;
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
-  margin-top: 15px;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #1a237e;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-button:hover,
-input[type="submit"]:hover {
-  background-color: #1a1a1a;
+.submit-btn:hover {
+  background-color: transparent;
 }
-
-p {
-  margin-bottom: 10px;
-  color: #000;
-}
-
-span {
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-    height: auto;
-    display: block;
-  }
-
-  form {
-    width: 100%;
-    padding: 20px;
-    margin: 20px auto;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-
-  input, select, button {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px;
-  }
-}
+  

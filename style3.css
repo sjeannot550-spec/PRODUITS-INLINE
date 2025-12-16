@@ -1,6 +1,6 @@
  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:wght@400..900&display=swap');
 
- * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,12 +17,12 @@ body {
 }
 
 form {
-  width: 350px;
+  width: 400px;
   padding: 30px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -36,80 +36,46 @@ label {
   font-size: 14px;
   font-weight: bold;
   color: #000;
+  display: block;
+  margin-top: 10px;
 }
 
 input[type="text"],
-input[type="email"],
-input[type="password"] {
+input[type="tel"],
+select {
   width: 100%;
   padding: 10px;
-  margin: 8px 0 15px 0;
+  margin-top: 5px;
+  margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 16px;
 }
 
 button,
-input[type="submit"] {
-  background-color: #112e42;
+input[type="submit"] {background-color: #112e42;
   color: white;
   padding: 10px 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   font-size: 16px;
   border: none;
   cursor: pointer;
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  box-sizing: border-box;
-  border: 3px solid rgba(255, 255, 255, .2);
+  border: 3px solid rgba(255, 255, 255, 0.2);
   border-radius: 30px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 button:hover,
 input[type="submit"]:hover {
-    background-color: transparent
+  background-color: #1a1a1a;
 }
 
-.footer-text {
-  text-align: center;
-  margin-top: 10px;
+p {
+  margin-bottom: 10px;
+  color: #000;
 }
 
-.footer-text a {
-  color: blue;
-  text-decoration: none;
-
-
+span {
+  font-weight: bold;
 }
 
-@media (max-width: 600px) {
-  form {
-    width: 100%;
-    margin: 20px;
-    padding: 20px;
-  }
-
-  body {
-    padding: 10px;
-    height: auto;
-    align-items: flex-start;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  label {
-    font-size: 13px;
-  }
-}

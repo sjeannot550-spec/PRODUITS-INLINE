@@ -11,8 +11,10 @@ nav {
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
+    font-weight: bold;
     background-color: #00072D;
+    color: grey;
     position: sticky;
     top: 0;
 }
