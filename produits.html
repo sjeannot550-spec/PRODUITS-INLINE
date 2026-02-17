@@ -14,14 +14,16 @@
   <div class="onglets">
     <ul>
       <li><a href="index.html">ACCUEIL</a></li>
-      <li><a href="inscription.html" id="inscrire-link">S'INSCRIRE</a></li>
-      <li><a href="connexion.html" id="connexion-link">CONNEXION</a></li>
+      <li><a href="register.html" id="registrer-link">S'INSCRIRE</a></li>
+      <li><a href="login.html" id="login-link">CONNEXION</a></li>
       <li><a href="#" id="deconnexion-link" style="display:none;">DÉCONNEXION</a></li>
     </ul>
     <p id="user-info" style="color: grey;"></p>
-    <form>
-      <input type="search" placeholder="Rechercher">
-    </form>
+    <form action="#" method="get">
+  <label for="search-input" class="visually-hidden">Rechercher</label>
+  <input type="search" id="search-input" name="search" placeholder="Rechercher">
+</form>
+
   </div>
 </nav>
 
@@ -752,6 +754,122 @@
 </section>
   </div>
 </section>
+
+<!-- pied de page -->
+      <footer>
+        <p>&copy; Contactez-nous au (+243 829 134 460) ou (+243 981 658 573)</p>
+        <div class="social-media">
+            <p><a href="https://web.facebook.com/profile.php?id=61570046106092"><i class="fa-brands fa-facebook-f"></i></a></p>
+            <p><a href="https://wa.me/829134460"><i class="fa-brands fa-whatsapp"></i></a></p>
+            <p><a href="https://www.instagram.com/jeannotkasikila/"><i class="fa-brands fa-instagram"></i></a></p>
+        </div>
+      </footer>
+     <!--fin du pied de page -->
+
+
+
+
+
+
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+/* 🔑 CONFIG SUPABASE */
+const SUPABASE_URL = "https://scmxpvachhjleicpaync.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNjbXhwdmFjaGhqbGVpY3BheW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5Mjg5NzYsImV4cCI6MjA4NDUwNDk3Nn0.XCk-qAWqKt1W5xDI-fnIEvj9KYta9ZzR2mUfFjj6ms4";
+
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// 1️⃣ On récupère tous les produits de la page
+function getProductsFromPage() {
+  const cards = document.querySelectorAll(".card");
+  const products = [];
+  cards.forEach(card => {
+    const title = card.querySelector(".title")?.innerText.trim();
+    const description = card.querySelector(".card-body p")?.innerText.trim();
+    const button = card.querySelector(".card-body button");
+    let price = 0;
+    if (button) {
+      const url = new URL(button.getAttribute("onclick").match(/'(.*)'/)[1]);
+      price = parseFloat(url.searchParams.get("price").replace(",", ".").replace(/\s/g,''));
+    }
+    if(title) {
+      products.push({title, description, price});
+    }
+  });
+  return products;
+}
+
+// 2️⃣ On insère les produits dans Supabase
+async function insertProductsToSupabase() {
+  const products = getProductsFromPage();
+  for (let prod of products) {
+    // Vérifier si le produit existe déjà pour éviter les doublons
+    const { data, error } = await supabase
+      .from("produits")
+      .select("*")
+      .eq("title", prod.title)
+      .limit(1);
+
+    if (!data?.length) {
+      await supabase.from("produits").insert([prod]);
+    }
+  }
+}
+insertProductsToSupabase();
+
+// 3️⃣ Fonction de recherche qui met le produit correspondant en haut
+const searchInput = document.querySelector("nav form input[type='search']");
+searchInput.addEventListener("input", function() {
+  const query = this.value.toLowerCase();
+  const cardsContainer = document.querySelector(".cards");
+  const cards = Array.from(cardsContainer.querySelectorAll(".card"));
+
+  cards.sort((a, b) => {
+    const titleA = a.querySelector(".title").innerText.toLowerCase();
+    const titleB = b.querySelector(".title").innerText.toLowerCase();
+
+    // Met les correspondances exactes en premier
+    if (titleA.includes(query) && !titleB.includes(query)) return -1;
+    if (!titleA.includes(query) && titleB.includes(query)) return 1;
+
+    // Sinon garde l'ordre
+    return 0;
+  });
+
+  // Réorganiser dans le DOM
+  cards.forEach(card => cardsContainer.appendChild(card));
+});
+</script>
+
+
+
+
+
+
+
+<script>
+const searchInput = document.querySelector('input[type="search"]');
+const cards = document.querySelectorAll('.card');
+
+searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    cards.forEach(card => {
+        const title = card.querySelector('.title').textContent.toLowerCase();
+        if(title.includes(query)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
+</script>
+
+
+
+
+
+
 
 </body>
 </html>

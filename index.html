@@ -1,37 +1,73 @@
  <!DOCTYPE html>
  <html lang="en">
- <head>
+ <header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>site e-commerce complet à partir de zéro - Frenchcoder</title>
      <link rel="stylesheet" href="style.css">
      <script src="https://kit.fontawesome.com/7c63cc3848.js" crossorigin="anonymous"></script>
      <script src="auth.js"></script>
- </head>
+ </header>
  <body>
     
     <!-- Barre de navigation -->
      <nav>
-        <h1>KAZAKHSTAN</h1>
-        <div class="onglets">
-         <ul>
-           <li><a href="index.html">ACCUEIL</a></li>
-           <li><a href="inscription.html" id="inscrire-link">S'INSCRIRE</a></li>
-           <li><a href="connexion.html" id="connexion-link">CONNEXION</a></li>
-           <li><a href="#" id="deconnexion-link" style="display:none;">DÉCONNEXION</a></li>
-           <span id="emailAffiche"></span>
-         </ul>
-        </div>
-     </nav>
+    <a href="index.html" class="logo-link">
+        <img src="logo/logo.png.jpeg.jpeg" alt="Logo KAZAKHSTAN" class="nav-logo">
+    </a>
+    
+    <div class="onglets">
+        <ul>
+            <li><a href="index.html">ACCUEIL</a></li>
+            <li><a href="inscription.html" id="inscrire-link">S'INSCRIRE</a></li>
+            <li><a href="connexion.html" id="connexion-link">CONNEXION</a></li>
+            <li><a href="#" id="deconnexion-link" style="display:none;">DÉCONNEXION</a></li>
+            <span id="emailAffiche"></span>
+        </ul>
+    </div>
+</nav>
     <!-- Fin de la Barre de navigation -->
 
- <script>
-  const email = localStorage.getItem("userEmail");
-  if (email) {
-    document.getElementById("emailAffiche").innerText = email;
-  }
- </script>
+ <section id="profil-section" style="display:none; background: #f4f4f4; padding: 20px; border-radius: 10px; margin: 20px;">
+    <h2>Mon Profil</h2>
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <div id="photo-profil"><i class="fa-solid fa-user-circle" style="font-size: 80px;"></i></div>
+        <div>
+            <p><strong>Nom :</strong> <span id="prof-nom"></span> <span id="prof-prenom"></span></p>
+            <p><strong>Email :</strong> <span id="prof-email"></span></p>
+            <p><strong>Téléphone :</strong> <span id="prof-tel"></span></p>
+            <p><strong>Adresse :</strong> <span id="prof-adresse"></span></p>
+            <p><strong>Sexe :</strong> <span id="prof-sexe"></span></p>
+        </div>
+    </div>
+</section>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sessionData = localStorage.getItem("session_utilisateurs");
+
+    if (sessionData) {
+        const user = JSON.parse(sessionData);
+
+        // Afficher la section profil
+        document.getElementById("profil-section").style.display = "block";
+
+        // Remplir les données
+        document.getElementById("prof-nom").innerText = user.name || "";
+        document.getElementById("prof-prenom").innerText = user.first_name || "";
+        document.getElementById("prof-email").innerText = user.email || "";
+        document.getElementById("prof-tel").innerText = user.phone || "Non renseigné";
+        document.getElementById("prof-adresse").innerText = user.address || "Non renseignée";
+        document.getElementById("prof-sexe").innerText = user.sex || "";
+
+        // Modifier la barre de navigation
+        document.getElementById("emailAffiche").innerText = "Salut, " + user.first_name;
+        document.getElementById("inscrire-link").style.display = "none";
+        document.getElementById("connexion-link").style.display = "none";
+        document.getElementById("deconnexion-link").style.display = "inline";
+    }
+});
+</script>
 
     <!-- Header -->
     <Header>

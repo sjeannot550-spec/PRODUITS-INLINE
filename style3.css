@@ -1,81 +1,106 @@
- @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:wght@400..900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Playfair Display", serif;
+:root {
+    --gold: #d4af37;
+    --dark: #1a1a1a;
+    --light: #f4f7f6;
 }
 
 body {
-  background: url('img.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e0e0e0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-form {
-  width: 400px;
-  padding: 30px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.main-wrapper { width: 95%; max-width: 1100px; }
+
+.checkout-container {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #000;
+/* Colonne Noire */
+.sidebar-order {
+    background: var(--dark);
+    color: white;
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #000;
-  display: block;
-  margin-top: 10px;
+.mini-logo {
+    width: 60px; height: 60px;
+    background: white; border-radius: 5px;
+    margin-bottom: 30px; object-fit: cover;
 }
 
-input[type="text"],
-input[type="tel"],
-select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+.order-item {
+    display: flex; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid #333;
+    font-size: 0.9rem;
 }
 
-button,
-input[type="submit"] {background-color: #112e42;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
-  margin-top: 15px;
+.total-big {
+    font-size: 3rem; color: var(--gold);
+    font-weight: bold; margin: 20px 0;
 }
 
-button:hover,
-input[type="submit"]:hover {
-  background-color: #1a1a1a;
+.secure-text { margin-top: auto; color: #666; font-size: 0.8rem; }
+
+/* Colonne Formulaire */
+.payment-area { flex: 1.5; padding: 40px; }
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.input-group input, select {
+    width: 100%; padding: 12px;
+    border: 1px solid #ddd; border-radius: 8px;
 }
 
-p {
-  margin-bottom: 10px;
-  color: #000;
+.btn-pay {
+    width: 100%; padding: 15px;
+    background: var(--gold); color: white;
+    border: none; border-radius: 8px;
+    font-weight: bold; cursor: pointer; font-size: 1rem;
 }
 
-span {
-  font-weight: bold;
+/* Colonne Autres Produits */
+.other-products { flex: 1; padding: 25px; background: #fafafa; border-left: 1px solid #eee; }
+.p-item {
+    display: flex; align-items: center;
+    background: white; padding: 8px;
+    margin-bottom: 10px; border-radius: 8px;
+    border: 1px solid #eee;
+}
+.p-item img { width: 45px; height: 45px; border-radius: 5px; margin-right: 10px; }
+.p-info { flex: 1; font-size: 0.8rem; }
+.ok-badge {
+    background: #27ae60; color: white; border: none;
+    padding: 5px 10px; border-radius: 5px; cursor: pointer;
 }
 
+/* Overlay de succès */
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); display: flex;
+    justify-content: center; align-items: center; z-index: 2000;
+}
+.success-card {
+    background: white; padding: 40px; border-radius: 20px;
+    text-align: center; max-width: 400px; animation: pop 0.3s ease;
+}
+.icon-check {
+    font-size: 50px; color: white; background: #27ae60;
+    width: 80px; height: 80px; line-height: 80px;
+    border-radius: 50%; margin: 0 auto 20px;
+}
+@keyframes pop { from { transform: scale(0.5); } to { transform: scale(1); } }
+
+@media (max-width: 850px) { .checkout-container { flex-direction: column; } }

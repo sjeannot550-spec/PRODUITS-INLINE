@@ -1,66 +1,150 @@
 <!DOCTYPE html>
-<html lang="fr">
+<lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paiement - KAZAKHSTAN</title>
-  <link rel="stylesheet" href="style3.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - KAZAKHSTAN</title>
+    <link rel="stylesheet" href="style3.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-<form id="paymentForm">
-  <h2>Paiement du produit</h2>
-  <p>Produit : <span id="item"></span></p>
-  <p>Prix : <span id="price"></span></p>
-  <input type="hidden" id="produit-nom" name="produit">
-  <input type="hidden" id="produit-prix" name="prix">
+<div class="main-wrapper">
+    <div class="checkout-container">
+        
+        <div class="sidebar-order">
+            <img src="logo/logo.png.jpeg.jpeg" alt="Logo" class="mini-logo">
+            <h3>Your Order</h3>
+            <div id="selected-items-list">
+                <div class="order-item"><i>Aucun produit sélectionné</i></div>
+            </div>
+            <div class="total-big">
+                <span id="total-val">0</span>$
+            </div>
+            <p class="secure-text">100% Secure Payment</p>
+        </div>
 
-  <label>Nom complet :</label>
-  <input type="text" name="fullname" required>
+        <div class="payment-area">
+            <h3>Payment Information</h3>
+            <form id="finalPaymentForm">
+                <div class="input-group">
+                    <label>Full name</label>
+                    <input type="text" id="fullname" placeholder="Ex. Jean Dupont" required>
+                </div>
 
-  <label>Numéro Orange/Airtel/M-pesa:</label>
-  <input type="tel" name="phone" placeholder="Ex: +2438xxxxxxxx" required>
+                <div class="input-group">
+                    <label>Telephone (Mobile Money)</label>
+                    <input type="tel" id="phone" placeholder="+243..." required>
+                </div>
 
-  <label>Opérateur :</label>
-  <select name="operator" required>
-    <option value="orange">Orange Money</option>
-    <option value="airtel">Airtel Money</option>
-    <option value="M-pesa">M-pesa</option>
-  </select>
+                <div class="input-group">
+                    <label>Payment method</label>
+                    <select id="operator" required>
+                        <option value="M-Pesa">M-Pesa (Vodacom)</option>
+                        <option value="Airtel Money">Airtel Money</option>
+                        <option value="Orange Money">Orange Money</option>
+                    </select>
+                </div>
 
-  <button type="submit">Payer maintenant</button>
-</form>
+                <button type="submit" class="btn-pay">Confirm purchase</button>
+                <p id="total-label" class="total-summary">Total: 0 $</p>
+            </form>
+        </div>
 
-<!-- Message de confirmation -->
-<p id="confirmationMessage" style="display:none; font-size:18px; color:green; margin-top:20px;"></p>
+        <div class="other-products">
+            <h3>Other Products</h3>
+            <div class="product-list" id="market-list">
+                </div>
+        </div>
+    </div>
+</div>
+
+<div id="confirmationOverlay" class="overlay" style="display:none;">
+    <div class="success-card">
+        <div class="icon-check">✔</div>
+        <h2>Paiement Réussi !</h2>
+        <p id="confirmationMessage"></p>
+        <button onclick="window.location.href='index.html'" class="btn-pay">Retour à l'accueil</button>
+    </div>
+</div>
 
 <script>
+/* 🔑 CONFIG SUPABASE */
+const SUPABASE_URL = "https://scmxpvachhjleicpaync.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNjbXhwdmFjaGhqbGVpY3BheW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5Mjg5NzYsImV4cCI6MjA4NDUwNDk3Nn0.XCk-qAWqKt1W5xDI-fnIEvj9KYta9ZzR2mUfFjj6ms4";
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const catalogue = [
+    { name: "Power Bank", price: 20, img: "https://i.pinimg.com/736x/2c/5b/01/2c5b015bd65230044dfd395241a2defb.jpg" },
+    { name: "Support ventouse", price: 25, img: "https://i.pinimg.com/1200x/e2/64/df/e264dff1499ec70a6f2009f65197e3c7.jpg" },
+    { name: "Ceinture en cuir", price: 2.5, img: "https://i.pinimg.com/1200x/ce/29/1c/ce291c659a747233c14d457929a0ba0c.jpg" },
+    { name: "Sac bandoulière", price: 5, img: "https://i.pinimg.com/736x/26/66/f3/2666f3f72ee6c8447c9b33fc9b09a8a7.jpg" },
+    { name: "Trépied selfie", price: 18, img: "https://i.pinimg.com/1200x/03/aa/82/03aa828194785d9e9159e304ec36e012.jpg" }
+];
+
+let selectedItems = [];
+let totalGlobal = 0;
+
+// Affichage initial
 window.onload = function() {
-  const params = new URLSearchParams(window.location.search);
-  const item = params.get("item");
-  const price = params.get("price");
-  document.getElementById("item").innerText = item;
-  document.getElementById("price").innerText = price + " $";
-  document.getElementById("produit-nom").value = item;
-  document.getElementById("produit-prix").value = price;
+    const marketList = document.getElementById('market-list');
+    catalogue.forEach(prod => {
+        marketList.innerHTML += `
+            <div class="p-item">
+                <img src="${prod.img}" alt="">
+                <div class="p-info"><strong>${prod.name}</strong><br>$${prod.price}</div>
+                <button class="ok-badge" onclick="ajouterProduit('${prod.name}', ${prod.price})">OK</button>
+            </div>`;
+    });
+
+    // Vérifier si un produit vient de l'index
+    const params = new URLSearchParams(window.location.search);
+    if(params.get("item")) {
+        ajouterProduit(params.get("item"), parseFloat(params.get("price")));
+    }
+};
+
+function ajouterProduit(nom, prix) {
+    selectedItems.push({ nom, prix });
+    totalGlobal += prix;
+    updateUI();
 }
 
-// Gestion du paiement simulé
-document.getElementById("paymentForm").addEventListener("submit", function(e){
-  e.preventDefault(); // Empêche l'envoi du formulaire
-  const item = document.getElementById("produit-nom").value;
-  const price = document.getElementById("produit-prix").value;
-  const fullname = this.fullname.value;
+function updateUI() {
+    const listDiv = document.getElementById('selected-items-list');
+    listDiv.innerHTML = "";
+    selectedItems.forEach(item => {
+        listDiv.innerHTML += `<div class="order-item"><span>${item.nom}</span><span>$${item.prix}</span></div>`;
+    });
+    document.getElementById('total-val').innerText = totalGlobal;
+    document.getElementById('total-label').innerText = "Total: " + totalGlobal + " $";
+}
 
-  // Affichage du message de confirmation
-  const message = document.getElementById("confirmationMessage");
-  message.innerText = `Merci ${fullname}, votre paiement de ${price}$ pour le produit "${item}" a été effectué avec succès !`;
-  message.style.display = "block";
+document.getElementById("finalPaymentForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    if(selectedItems.length === 0) return alert("Sélectionnez au moins un produit !");
 
-  // Réinitialiser le formulaire si nécessaire
-  this.reset();
+    const nomClient = document.getElementById("fullname").value;
+    const phoneClient = document.getElementById("phone").value;
+
+    const { error } = await supabaseClient.from("paiements").insert([{
+        produit: selectedItems.map(i => i.nom).join(", "),
+        prix: totalGlobal,
+        fullname: nomClient,
+        phone: phoneClient,
+        operator: document.getElementById("operator").value
+    }]);
+
+    if (error) {
+        alert("Erreur : " + error.message);
+    } else {
+        // AFFICHAGE DU MESSAGE DE SUCCÈS SANS QUITTER LA PAGE
+        document.getElementById("confirmationMessage").innerText = 
+            `Merci ${nomClient}, votre paiement de ${totalGlobal}$ a été effectué avec succès !`;
+        document.getElementById("confirmationOverlay").style.display = "flex";
+        this.reset();
+    }
 });
 </script>
-
 </body>
 </html>

@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connexion - GALAXIE</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="auth.js"></script>
+
+  <!-- Supabase JS -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <!-- bcrypt pour comparer le mot de passe -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
 </head>
 <body>
 
@@ -15,21 +19,46 @@
   <input type="email" id="email" required placeholder="exemple@gmail.com">
   <label>Mot de passe :</label>
   <input type="password" id="password" required>
-  <button type="submit">Se connecter</button>
+  <button type="submit">Se connecter <a href="profil.html"></a></button>
   <p>Pas encore inscrit ? <a href="inscription.html">Créer un compte</a></p>
 </form>
 
 <script>
-function connecter(event) {
+const SUPABASE_URL = "https://scmxpvachhjleicpaync.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNjbXhwdmFjaGhqbGVpY3BheW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5Mjg5NzYsImV4cCI6MjA4NDUwNDk3Nn0.XCk-qAWqKt1W5xDI-fnIEvj9KYta9ZzR2mUfFjj6ms4";
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function connecter(event) {
   event.preventDefault();
   const email = document.getElementById("email").value;
-  if (!email.includes("@gmail.com")) {
-    alert("Veuillez utiliser un compte Gmail !");
+  const password = document.getElementById("password").value;
+
+  // Récupérer les infos de l'utilisateur
+  const { data: utilisateur, error } = await supabaseClient
+    .from("utilisateurs")
+    .select("*")
+    .eq("email", email)
+    .single();
+
+  if (error || !utilisateur) {
+    alert("Compte introuvable !");
     return;
   }
-  localStorage.setItem("userEmail", email);
-  alert("Connexion réussie !");
-  window.location.href = "index.html";
+
+  // Vérification du mot de passe (Correction du nom de variable utilisateur)
+  const passwordValide = bcrypt.compareSync(password, utilisateur.password);
+
+  if (passwordValide) {
+    // On stocke l'objet complet proprement
+    localStorage.setItem("session_utilisateur", JSON.stringify(utilisateur));
+    
+    alert("Bienvenue " + (utilisateur.first_name || "dans votre galaxie"));
+    // Redirection vers la page profil
+    window.location.href = "profil.html";
+  } else {
+    alert("Mot de passe incorrect");
+  }
 }
 </script>
 

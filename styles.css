@@ -1,19 +1,31 @@
- @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:wght@400..900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
- * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Playfair Display", serif;
+/* --- Variables de Design --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --text-dark: #333;
+    --bg-light: #f4f7f6;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: url('img.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 form {
@@ -81,35 +93,4 @@ input[type="submit"]:hover {
 .footer-text a {
   color: blue;
   text-decoration: none;
-
-
-}
-
-@media (max-width: 600px) {
-  form {
-    width: 100%;
-    margin: 20px;
-    padding: 20px;
-  }
-
-  body {
-    padding: 10px;
-    height: auto;
-    align-items: flex-start;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  label {
-    font-size: 13px;
-  }
 }

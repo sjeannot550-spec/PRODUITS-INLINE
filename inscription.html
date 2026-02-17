@@ -2,105 +2,138 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Enregistrement</title>
-  <link rel="stylesheet" href="style2.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription - GALAXIE</title>
+  <link rel="stylesheet" href="style3.css">
+
+  <!-- Supabase JS -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
-<div class="form-container">
-  <h2>Formulaire d'Inscription</h2>
+<div class="form-box">
+  <h2>Inscription</h2>
 
-  <div class="row">
-    <div>
-      <label>Nom</label>
-      <input type="text" required>
+  <form onsubmit="inscrire(event)">
+    <div class="row">
+      <div>
+        <label>Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div>
+        <label>Surname</label>
+        <input type="text" id="surname" required>
+      </div>
+      <div>
+        <label>First name</label>
+        <input type="text" id="first_name" required>
+      </div>
     </div>
-    <div>
-      <label>Postnom</label>
-      <input type="text" required>
-    </div>
-    <div>
-      <label>Prénom</label>
-      <input type="text" required>
-    </div>
-  </div>
 
-  <div class="row">
-    <div>
-      <label>Sexe</label>
-      <select required>
-        <option>-- Choisir --</option>
-        <option>Masculin</option>
-        <option>Féminin</option>
-      </select>
+    <div class="row">
+      <div>
+        <label>Sex</label>
+        <select id="sex" required>
+          <option value="">-- Choose --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div>
+        <label>Date of birth</label>
+        <input type="date" id="date_of_birth" required>
+      </div>
     </div>
-    <div>
-      <label>Date de naissance</label>
-        <input type="date" required>
-    </div>
-  </div>
 
-  <label>Photo</label>
-  <input type="file" accept="image/png, image/jpeg">
-
-  <label>Adresse</label>
-  <textarea required rows="2"></textarea>
-
-  <div class="row">
     <div>
-      <label>Email</label>
-      <input type="email" required>
+      <label>Photo</label>
+      <input type="file" id="photo" accept="image/*">
     </div>
-    <div>
-      <label>Téléphone</label>
-      <input type="text" required>
-    </div>
-  </div>
 
-  <div class="row">
     <div>
-      <label>Mot de passe</label>
-      <input type="password" required>
+      <label>Address</label>
+      <textarea id="address" rows="2"></textarea>
     </div>
-    <div>
-      <label>Confirmation</label>
-      <input type="password" required>
-    </div>
-  </div>
 
-  <button class="submit-btn">Soumettre la demande</button>
+    <div class="row">
+      <div>
+        <label>E-mail</label>
+        <input type="email" id="email" required>
+      </div>
+      <div>
+        <label>Phone</label>
+        <input type="tel" id="phone">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <div>
+        <label>Confirmation</label>
+        <input type="password" id="confirm_password" required>
+      </div>
+    </div>
+
+    <button type="submit">Record</button>
+
+      <p style="margin-top:10px; text-align:center;">
+      Vous avez déjà un compte ? 
+      <a href="connexion.html">Se connecter</a>
+    </p>
+  </form>
 </div>
 
 <script>
-  document.querySelector(".submit-btn").addEventListener("click", function (e) {
-    e.preventDefault();
+/* 🔑 CONFIG SUPABASE */
+const SUPABASE_URL = "https://scmxpvachhjleicpaync.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNjbXhwdmFjaGhqbGVpY3BheW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5Mjg5NzYsImV4cCI6MjA4NDUwNDk3Nn0.XCk-qAWqKt1W5xDI-fnIEvj9KYta9ZzR2mUfFjj6ms4";
 
-    const email = document.querySelector("input[type='email']").value;
-    const mdp = document.querySelector("input[type='password']").value;
-    const confirm = document.querySelectorAll("input[type='password']")[1].value;
+/* ⚡ Création du client Supabase */
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    if (!email.includes("@gmail.com")) {
-      alert("Utilisez un email Gmail valide !");
-      return;
-    }
+async function inscrire(event) {
+  event.preventDefault();
+  
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm_password").value;
 
-    if (mdp.length < 6) {
-      alert("Mot de passe trop court (6 caractères minimum)");
-      return;
-    }
+  if (password !== confirmPassword) {
+    alert("Les mots de passe ne correspondent pas");
+    return;
+  }
 
-    if (mdp !== confirm) {
-      alert("Les mots de passe ne correspondent pas");
-      return;
-    }
+  // Hachage du mot de passe avant envoi (Recommandé)
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(password, salt);
 
-    // Enregistrement dans localStorage
-    localStorage.setItem("userEmail", email);
-    localStorage.setItem("userPassword", mdp);
+  const userData = {
+    name: document.getElementById("name").value,
+    surname: document.getElementById("surname").value,
+    first_name: document.getElementById("first_name").value,
+    sex: document.getElementById("sex").value,
+    date_of_birth: document.getElementById("date_of_birth").value,
+    address: document.getElementById("address").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    password: hashedPassword, // On envoie le mot de passe sécurisé
+    role: 'client' // Par défaut
+  };
 
-    alert("Inscription réussie !");
-    window.location.href = "index.html"; // ou une autre page
-  });
+  const { error } = await supabaseClient
+    .from("utilisateurs")
+    .insert([userData]);
+
+  if (error) {
+    alert("Erreur : " + error.message);
+  } else {
+    alert("Compte créé avec succès !");
+    window.location.href = "connexion.html";
+  }
+}
 </script>
 
 </body>
