@@ -865,7 +865,36 @@ searchInput.addEventListener('input', function() {
 });
 </script>
 
+<script>
+  // Initialisation du panier au chargement
+let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+majBadgePanier();
 
+function ajouterAuPanier(nom, prix) {
+    // Ajouter l'objet au tableau
+    panier.push({ nom: nom, prix: parseFloat(prix) });
+    
+    // Sauvegarder dans le navigateur
+    localStorage.setItem('monPanier', JSON.stringify(panier));
+    
+    // Mettre à jour l'affichage
+    majBadgePanier();
+    alert(nom + " ajouté au panier !");
+}
+
+function majBadgePanier() {
+    const countElement = document.getElementById('cart-count');
+    if (panier.length > 0) {
+        countElement.innerText = panier.length;
+        countElement.style.display = "block";
+    } else {
+        countElement.style.display = "none";
+    }
+}
+
+// Modifier vos boutons "Acheter" existants pour qu'ils appellent ajouterAuPanier()
+// Exemple : <button onclick="ajouterAuPanier('TWS', 105000)">Ajouter au panier</button>
+</script>
 
 
 

@@ -13,7 +13,7 @@
     <div class="checkout-container">
         
         <div class="sidebar-order">
-            <img src="logo/logo.png.jpeg.jpeg" alt="Logo" class="mini-logo">
+            <img src="logo.png.jpeg.jpeg" alt="Logo" class="mini-logo">
             <h3>Your Order</h3>
             <div id="selected-items-list">
                 <div class="order-item"><i>Aucun produit sélectionné</i></div>
@@ -145,6 +145,14 @@ document.getElementById("finalPaymentForm").addEventListener("submit", async fun
         this.reset();
     }
 });
+
+// Après le succès du paiement dans la fonction existante
+if (!error) {
+    localStorage.removeItem('monPanier'); // Vide le panier localement
+    panier = [];
+    majBadgePanier(); // Met à jour le compteur à 0
+    document.getElementById("confirmationMessage").innerText = "Paiement réussi !";
+}
 </script>
 </body>
 </html>

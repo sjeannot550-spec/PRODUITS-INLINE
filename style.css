@@ -67,6 +67,13 @@ nav .onglets ul {
     align-items: center;
 }
 
+.cart-nav:hover i {
+    color: #d4af37; /* Changement de couleur au survol */
+}
+#cart-count {
+    display: none; /* Caché si le panier est vide */
+}
+
 nav .onglets li a {
     text-decoration: none;
     color: var(--text-dark);
